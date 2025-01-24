@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-int traverseFront(ListNode* head){
+int travel_front(ListNode* head){
     int len=0;
     while(head!=NULL){
         len++;
@@ -19,26 +19,21 @@ int traverseFront(ListNode* head){
     return len;
 }
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int L=traverseFront(head);
-
-          
-        //cornercase
-        if(n==L){
-            ListNode* temp=head->next;
-            delete(head);
-            return temp;
+        int l= travel_front(head);
+        if(n==l){
+        ListNode* temp=head->next;
+        delete(head);
+        return temp;
         }
-
-        int travelFront=L-n;
-         ListNode* temp=head;
-         ListNode* prev=NULL;
-
-       while(travelFront--){
-           prev=temp;
-           temp=temp->next;
-       }
-      prev->next=temp->next;
-      delete(temp);
-      return head;
+        int diff=l-n;
+        ListNode* temp=head;
+        ListNode* prev=NULL;
+        while(diff--){
+          prev=temp;
+          temp=temp->next;
+        }
+        prev->next=temp->next;
+        delete(temp);
+        return head;
     }
 };
